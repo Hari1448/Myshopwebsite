@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { z } from 'zod';
+import { pool } from '../db/pool.js';
+import { validate } from '../middleware/validate.js';
+const router=Router();
+const schema=z.object({name:z.string().trim().min(1).max(200),phone:z.string().max(30).optional().default(''),address:z.string().max(500).optional().default(''),advance_amount:z.coerce.number().min(0).optional().default(0),cans_held:z.coerce.number().int().min(0).optional().default(0),deliveries_count:z.coerce.number().int().min(0).optional().default(0),due_amount:z.coerce.number().min(0).optional().default(0),payment_status:z.enum(['Paid','Pending']).optional().default('Pending'),notes:z.string().max(1000).optional().default('')});
+router.get('/',async(_req,res,next)=>{try{res.json((await pool.query('SELECT * FROM watercan_customers ORDER BY name')).rows);}catch(e){next(e);}});
+router.post('/',validate(schema),async(req,res,next)=>{try{const b=req.body;const r=await pool.query(`INSERT INTO watercan_customers(name,phone,address,advance_amount,cans_held,deliveries_count,due_amount,payment_status,notes) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,[b.name,b.phone,b.address,b.advance_amount,b.cans_held,b.deliveries_count,b.due_amount,b.payment_status,b.notes]);res.status(201).json(r.rows[0]);}catch(e){next(e);}});
+router.patch('/:id/paid',async(req,res,next)=>{try{const r=await pool.query("UPDATE watercan_customers SET payment_status='Paid',due_amount=0 WHERE id=$1 RETURNING *",[req.params.id]);if(!r.rowCount)return res.status(404).json({error:'Customer not found'});res.json(r.rows[0]);}catch(e){next(e);}});
+router.post('/:id/deliveries',async(req,res,next)=>{try{const count=Number(req.body.cans||1);if(!Number.isInteger(count)||count<1||count>1000)return res.status(400).json({error:'cans must be an integer between 1 and 1000'});const r=await pool.query('UPDATE watercan_customers SET deliveries_count=deliveries_count+$1,last_delivery=NOW() WHERE id=$2 RETURNING *',[count,req.params.id]);if(!r.rowCount)return res.status(404).json({error:'Customer not found'});res.json(r.rows[0]);}catch(e){next(e);}});
+export default router;

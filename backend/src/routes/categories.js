@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { z } from 'zod';
+import { pool } from '../db/pool.js';
+import { validate } from '../middleware/validate.js';
+const router = Router();
+const schema = z.object({ name: z.string().trim().min(1).max(100), description: z.string().max(500).optional().default(''), icon: z.string().max(30).optional().default(''), color: z.string().max(30).optional().default('blue'), is_service: z.coerce.boolean().optional().default(false) });
+router.get('/', async (_req,res,next)=>{ try { res.json((await pool.query('SELECT c.*, COUNT(p.id)::int AS product_count FROM categories c LEFT JOIN products p ON p.category_id=c.id GROUP BY c.id ORDER BY c.name')).rows); } catch(e){next(e);} });
+router.post('/', validate(schema), async(req,res,next)=>{ try { const r=await pool.query('INSERT INTO categories(name,description,icon,color,is_service) VALUES($1,$2,$3,$4,$5) RETURNING *',[req.body.name,req.body.description,req.body.icon,req.body.color,req.body.is_service]); res.status(201).json(r.rows[0]); }catch(e){next(e);} });
+router.put('/:id', validate(schema), async(req,res,next)=>{ try { const r=await pool.query('UPDATE categories SET name=$1,description=$2,icon=$3,color=$4,is_service=$5 WHERE id=$6 RETURNING *',[req.body.name,req.body.description,req.body.icon,req.body.color,req.body.is_service,req.params.id]); if(!r.rowCount)return res.status(404).json({error:'Category not found'}); res.json(r.rows[0]); }catch(e){next(e);} });
+router.delete('/:id', async(req,res,next)=>{ try { const r=await pool.query('DELETE FROM categories WHERE id=$1 RETURNING id',[req.params.id]); if(!r.rowCount)return res.status(404).json({error:'Category not found'}); res.status(204).end(); }catch(e){next(e);} });
+export default router;

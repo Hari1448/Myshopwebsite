@@ -1,0 +1,46 @@
+SUNMADHI STORE  -  how to start
+================================
+
+OPTION A  (easiest - Docker, nothing else to install)
+-----------------------------------------------------
+1. Install and open Docker Desktop. Wait until it says "running".
+2. Double-click  stop-app.bat   (only if an older copy was running).
+3. Double-click  start-app.bat
+   - The first time takes a few minutes.
+   - The browser opens at  http://localhost:5055
+4. Login:   sunmadhistore@gmail.com   /   Sms@123456789
+5. If something does not open, double-click  diagnose.bat  and send me the output.
+
+Your data is kept between restarts. To stop: stop-app.bat
+(reset-database.bat DELETES all saved data - use only if you want to start fresh.)
+
+OPTION B  (VS Code / PowerShell, for editing the code)
+------------------------------------------------------
+Always open the terminals from THIS folder (VS Code: right-click the folder
+-> Open in Integrated Terminal).
+
+Terminal 1 - database + backend:
+   cd backend
+   docker compose up -d
+   npm install
+   npm run db:init
+   npm run admin:create
+   npm run dev
+
+Terminal 2 - web page:
+   cd frontend
+   npm install
+   npm run dev
+   -> open http://localhost:5173   (press Ctrl+Shift+R once)
+
+Do not run Option A and Option B at the same time.
+
+WHAT IS NEW
+-----------
+* Products get an automatic code starting at 101 (shown in Add Product, Products
+  page and Billing).
+* Add Product asks: name, category, unit, stock, low-stock alert  (no price).
+* Billing: search by name or code (Enter on an exact code adds it to the bill),
+  type Quantity and Rate directly in the bill.
+* Stock is still tracked and checked while billing.
+* Billing page top header block removed.

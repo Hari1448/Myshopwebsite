@@ -1,0 +1,453 @@
+export const initialCategories = [
+  { 
+    id: "clothes", 
+    name: "Clothes", 
+    icon: "👕", 
+    color: "blue", 
+    count: "124 items",
+    description: "Readymade, Sarees & Textiles"
+  },
+  { 
+    id: "cosmetics", 
+    name: "Cosmetics", 
+    icon: "💄", 
+    color: "pink", 
+    count: "86 items",
+    description: "Skincare, Haircare & Makeup"
+  },
+  { 
+    id: "fancy", 
+    name: "Fancy Store", 
+    icon: "💍", 
+    color: "purple", 
+    count: "152 items",
+    description: "Bangles, Gifts & Accessories"
+  },
+  { 
+    id: "electrical", 
+    name: "Electrical & Electronics", 
+    icon: "🔌", 
+    color: "orange", 
+    count: "94 items",
+    description: "Bulbs, Wires, Chargers & Cables"
+  },
+  { 
+    id: "watercan", 
+    name: "Watercan Supply", 
+    icon: "💧", 
+    color: "cyan", 
+    count: "48 cans",
+    description: "20L Water Can Delivery & Refills"
+  },
+  { 
+    id: "recharge", 
+    name: "Recharge", 
+    icon: "⚡", 
+    color: "emerald", 
+    count: "Instant Service",
+    description: "Mobile (Jio, Airtel, Vi) & DTH",
+    isService: true,
+    action: "recharge"
+  },
+  { 
+    id: "money-transfer", 
+    name: "Money Transfer", 
+    icon: "💸", 
+    color: "teal", 
+    count: "DMT & UPI",
+    description: "Domestic Bank Transfer & UPI",
+    isService: true,
+    action: "transfer"
+  },
+];
+
+export const initialProducts = [
+  {
+    id: "PRD-101",
+    name: "Cotton Casual Shirt",
+    category: "Clothes",
+    price: 650,
+    costPrice: 420,
+    stock: 14,
+    lowStockThreshold: 5,
+    unit: "pcs"
+  },
+  {
+    id: "PRD-102",
+    name: "Silk Saree (Kanchipuram Style)",
+    category: "Clothes",
+    price: 1850,
+    costPrice: 1250,
+    stock: 6,
+    lowStockThreshold: 4,
+    unit: "pcs"
+  },
+  {
+    id: "PRD-103",
+    name: "Lycra Formal Trousers",
+    category: "Clothes",
+    price: 750,
+    costPrice: 500,
+    stock: 3, // LOW STOCK!
+    lowStockThreshold: 5,
+    unit: "pcs"
+  },
+  {
+    id: "PRD-201",
+    name: "Clinic Plus Strong & Long Shampoo (650ml)",
+    category: "Cosmetics",
+    price: 180,
+    costPrice: 155,
+    stock: 18,
+    lowStockThreshold: 6,
+    unit: "bottle"
+  },
+  {
+    id: "PRD-202",
+    name: "Fair & Lovely Glow & Lovely Face Cream (50g)",
+    category: "Cosmetics",
+    price: 95,
+    costPrice: 78,
+    stock: 4, // LOW STOCK!
+    lowStockThreshold: 6,
+    unit: "tube"
+  },
+  {
+    id: "PRD-203",
+    name: "Ponds Dreamflower Fragrant Talc (100g)",
+    category: "Cosmetics",
+    price: 120,
+    costPrice: 96,
+    stock: 22,
+    lowStockThreshold: 5,
+    unit: "pack"
+  },
+  {
+    id: "PRD-301",
+    name: "Velvet Glass Bangles Set (Dozen)",
+    category: "Fancy Store",
+    price: 150,
+    costPrice: 85,
+    stock: 30,
+    lowStockThreshold: 8,
+    unit: "set"
+  },
+  {
+    id: "PRD-302",
+    name: "Traditional Temple Jewellery Necklace Set",
+    category: "Fancy Store",
+    price: 450,
+    costPrice: 280,
+    stock: 5,
+    lowStockThreshold: 4,
+    unit: "set"
+  },
+  {
+    id: "PRD-303",
+    name: "Kids Birthday Gift Toy Box",
+    category: "Fancy Store",
+    price: 250,
+    costPrice: 160,
+    stock: 2, // LOW STOCK!
+    lowStockThreshold: 5,
+    unit: "box"
+  },
+  {
+    id: "PRD-401",
+    name: "Philips 9W Cool Daylight LED Bulb",
+    category: "Electrical & Electronics",
+    price: 120,
+    costPrice: 85,
+    stock: 25,
+    lowStockThreshold: 8,
+    unit: "pcs"
+  },
+  {
+    id: "PRD-402",
+    name: "Fast Type-C Braided Charging Cable (65W)",
+    category: "Electrical & Electronics",
+    price: 199,
+    costPrice: 110,
+    stock: 4, // LOW STOCK!
+    lowStockThreshold: 6,
+    unit: "pcs"
+  },
+  {
+    id: "PRD-403",
+    name: "4-Way Spike Buster Extension Board (2m)",
+    category: "Electrical & Electronics",
+    price: 280,
+    costPrice: 190,
+    stock: 9,
+    lowStockThreshold: 4,
+    unit: "box"
+  },
+  {
+    id: "PRD-501",
+    name: "20L Pure RO Water Can Refill",
+    category: "Watercan Supply",
+    price: 40,
+    costPrice: 18,
+    stock: 45,
+    lowStockThreshold: 10,
+    unit: "can"
+  },
+  {
+    id: "PRD-502",
+    name: "Manual Water Dispenser Hand Pump",
+    category: "Watercan Supply",
+    price: 150,
+    costPrice: 90,
+    stock: 8,
+    lowStockThreshold: 4,
+    unit: "pcs"
+  },
+];
+
+export const initialCreditCustomers = [
+  {
+    id: "CRD-201",
+    name: "Senthil Nathan",
+    phone: "98412 34567",
+    items: "2x 20L Water Can Refill, 1x Philips 9W LED Bulb",
+    totalAmount: 200,
+    paidAmount: 50,
+    balanceAmount: 150,
+    date: "Today, 09:30 AM",
+    dueDate: "30-Oct-2026",
+    status: "Pending",
+    notes: "Regular customer from 2nd Street"
+  },
+  {
+    id: "CRD-202",
+    name: "Kavitha R.",
+    phone: "97901 88231",
+    items: "1x Silk Saree, 1x Velvet Glass Bangles Set",
+    totalAmount: 2000,
+    paidAmount: 800,
+    balanceAmount: 1200,
+    date: "Yesterday, 04:15 PM",
+    dueDate: "05-Nov-2026",
+    status: "Pending",
+    notes: "Festival purchase, promised on salary day"
+  },
+  {
+    id: "CRD-203",
+    name: "Murugan (Electrical Contractor)",
+    phone: "94441 12903",
+    items: "6x Philips 9W LED Bulb, 2x Extension Board",
+    totalAmount: 1280,
+    paidAmount: 0,
+    balanceAmount: 1280,
+    date: "23-Oct-2026",
+    dueDate: "28-Oct-2026",
+    status: "Overdue",
+    notes: "Site wiring material credit"
+  },
+  {
+    id: "CRD-204",
+    name: "Ramesh Babu",
+    phone: "98409 76120",
+    items: "1x Cotton Casual Shirt",
+    totalAmount: 650,
+    paidAmount: 650,
+    balanceAmount: 0,
+    date: "21-Oct-2026",
+    dueDate: "25-Oct-2026",
+    status: "Cleared",
+    notes: "Bill settled in full via Google Pay"
+  }
+];
+
+export const initialSales = [
+  { 
+    id: "INV-1001", 
+    customerName: "Walk-in Customer",
+    customerPhone: "98401 11223",
+    item: "Clinic Plus Strong & Long Shampoo (650ml)", 
+    itemsSummary: "1x Clinic Plus Shampoo",
+    category: "Cosmetics", 
+    amount: 180, 
+    fee: 0, 
+    paymentMode: "Cash",
+    creditAmount: 0,
+    status: "Paid", 
+    type: "Retail",
+    date: "10:15 AM",
+    fullDate: "Today"
+  },
+  { 
+    id: "INV-1002", 
+    customerName: "Anand M.",
+    customerPhone: "98840 22334",
+    item: "Philips 9W LED Bulb (Pack of 2)", 
+    itemsSummary: "2x Philips 9W Bulb",
+    category: "Electrical & Electronics", 
+    amount: 240, 
+    fee: 0, 
+    paymentMode: "UPI",
+    creditAmount: 0,
+    status: "Paid", 
+    type: "Retail",
+    date: "10:42 AM",
+    fullDate: "Today"
+  },
+  { 
+    id: "INV-1003", 
+    customerName: "Senthil Nathan",
+    customerPhone: "98412 34567",
+    item: "20L RO Water Can Refill & LED Bulb", 
+    itemsSummary: "2x Water Can, 1x LED Bulb",
+    category: "Watercan Supply", 
+    amount: 200, 
+    fee: 0, 
+    paymentMode: "Credit",
+    creditAmount: 150, // Credit balance
+    status: "Pending", 
+    type: "Retail",
+    date: "11:05 AM",
+    fullDate: "Today"
+  },
+  { 
+    id: "INV-1004", 
+    customerName: "Vijayan K.",
+    customerPhone: "97890 33445",
+    item: "Cotton Casual Shirt", 
+    itemsSummary: "1x Cotton Shirt",
+    category: "Clothes", 
+    amount: 650, 
+    fee: 0, 
+    paymentMode: "Cash",
+    creditAmount: 0,
+    status: "Paid", 
+    type: "Retail",
+    date: "11:20 AM",
+    fullDate: "Today"
+  },
+  { 
+    id: "RCH-1005", 
+    customerName: "Manojkumar",
+    customerPhone: "98401 23456",
+    item: "Jio Prepaid 1.5GB/day (28 Days)", 
+    itemsSummary: "Jio ₹239 Recharge",
+    category: "Recharge", 
+    amount: 239, 
+    fee: 0, 
+    paymentMode: "Cash",
+    creditAmount: 0,
+    status: "Paid", 
+    type: "Recharge",
+    operator: "Jio",
+    targetNumber: "9840123456",
+    planSummary: "1.5 GB/Day · 28 Days · Unlimited Calls",
+    date: "11:35 AM",
+    fullDate: "Today"
+  },
+  { 
+    id: "DMT-1006", 
+    customerName: "Ramesh Kumar (Sender)",
+    customerPhone: "98765 43210",
+    item: "IMPS Bank Transfer to Ramesh Kumar", 
+    itemsSummary: "IMPS SBI DMT ₹5000",
+    category: "Money Transfer", 
+    amount: 5000, 
+    fee: 50, 
+    totalCollected: 5050,
+    paymentMode: "Cash",
+    creditAmount: 0,
+    status: "Paid", 
+    type: "Money Transfer",
+    destination: "State Bank of India - A/C ****4892",
+    utr: "UTR948201948",
+    senderPhone: "9876543210",
+    date: "11:50 AM",
+    fullDate: "Today"
+  },
+  { 
+    id: "RCH-1007", 
+    customerName: "Selvi P.",
+    customerPhone: "99402 88123",
+    item: "Sun Direct DTH Tamil Super Pack", 
+    itemsSummary: "Sun Direct ₹299 DTH Pack",
+    category: "Recharge", 
+    amount: 299, 
+    fee: 0, 
+    paymentMode: "UPI",
+    creditAmount: 0,
+    status: "Paid", 
+    type: "Recharge",
+    operator: "Sun Direct",
+    targetNumber: "4109283719",
+    planSummary: "Tamil Regional + Sports 30 Days",
+    date: "12:10 PM",
+    fullDate: "Today"
+  },
+];
+
+export const initialWatercanCustomers = [
+  {
+    id: "WC-101",
+    name: "Murugan (Flat 2A)",
+    phone: "98401 23456",
+    advanceAmount: 300,
+    cansHeld: 2,
+    deliveriesCount: 8,
+    dueAmount: 0,
+    paymentStatus: "Paid",
+    lastDelivery: "Today, 08:30 AM",
+    address: "2nd Street, Block B, Flat 2A",
+    notes: "Daily morning 2 cans delivery",
+  },
+  {
+    id: "WC-102",
+    name: "Lakshmi Bhavan Hotel",
+    phone: "97901 88231",
+    advanceAmount: 1000,
+    cansHeld: 5,
+    deliveriesCount: 24,
+    dueAmount: 480,
+    paymentStatus: "Pending",
+    lastDelivery: "Yesterday",
+    address: "Main Road, Opp. Bus Stand",
+    notes: "Commercial kitchen delivery daily",
+  },
+  {
+    id: "WC-103",
+    name: "Suresh Kumar (Plot 14)",
+    phone: "98412 99887",
+    advanceAmount: 150,
+    cansHeld: 1,
+    deliveriesCount: 6,
+    dueAmount: 0,
+    paymentStatus: "Paid",
+    lastDelivery: "24-Oct-2026",
+    address: "Plot 14, Gandhi Nagar",
+    notes: "Refill on alternate days",
+  },
+  {
+    id: "WC-104",
+    name: "Venkatesh Grocery Store",
+    phone: "94441 55667",
+    advanceAmount: 600,
+    cansHeld: 3,
+    deliveriesCount: 16,
+    dueAmount: 160,
+    paymentStatus: "Pending",
+    lastDelivery: "Today, 10:15 AM",
+    address: "Cross Street, Shop #4",
+    notes: "3 cans refill every 2 days",
+  },
+  {
+    id: "WC-105",
+    name: "Dr. K. Radhakrishnan Clinic",
+    phone: "98840 12890",
+    advanceAmount: 300,
+    cansHeld: 2,
+    deliveriesCount: 12,
+    dueAmount: 0,
+    paymentStatus: "Paid",
+    lastDelivery: "25-Oct-2026",
+    address: "1st Floor, Main Road",
+    notes: "Weekly Monday & Thursday refill",
+  },
+];
